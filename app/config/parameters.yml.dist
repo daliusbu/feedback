@@ -1,0 +1,15 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host: 127.0.0.1
+    database_port: 3306
+    database_name: regreply
+    database_user: admin
+    database_password: admin
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user:
+    mailer_password:
+    secret: ThisTokenIsNotSoSecretChangeIt
+

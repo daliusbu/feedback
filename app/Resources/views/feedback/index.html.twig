@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LckPtMUAAAAADHsa4hFRB4unmbpFW-Z9pIXYe68"></script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-3">
+        <h3>Jūsų atsiliepimai</h3>
+        <h6>(Prašome būtinai užpildyti visus formos laukelius)</h6>
+        <hr>
+        <div class="col-md-8">
+            {{ form_start(form, {'attr': {
+                'id': 'feedbackForm'
+            }}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        let forma = $('#feedbackForm');
+        forma.submit(function (event) {
+            event.preventDefault();
+
+            grecaptcha.ready(function () {
+                grecaptcha.execute('6LckPtMUAAAAADHsa4hFRB4unmbpFW-Z9pIXYe68', {action: 'homepage'}).then(function (token) {
+                    forma.prepend('<input type="hidden" name="token" value="' + token + '">');
+                    forma.prepend('<input type="hidden" name="action" value="homepage">');
+                    forma.unbind('submit').submit();
+                });
+            });
+        });
+    </script>
+{% endblock %}

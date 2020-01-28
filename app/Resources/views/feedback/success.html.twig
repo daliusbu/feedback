@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h3 class="mt-5">Ačiū už Jūsų žinutę!</h3>
+        <p>Artimiausiu metu atsakysime Jūsų nuorodytu el. pašto adresu.</p>
+        <div>
+            <a href="{{ path('feedback') }}"><button class="btn btn-primary">Atgal</button></a>
+        </div>
+    </div>
+
+
+{% endblock %}
